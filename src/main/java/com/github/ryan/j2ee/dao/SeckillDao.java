@@ -24,6 +24,6 @@ public interface SeckillDao {
      * @param seckillId
      * @return
      */
-    Seckill queryById(long seckillId);
+    Seckill querySeckillById(long seckillId);
 
 }

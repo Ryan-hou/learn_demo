@@ -22,9 +22,9 @@ public class SeckillServiceTempImpl implements SeckillServiceTemp {
 
     @Transactional
     public void doSeckill(long seckillId) {
-        log.info("seckill number = {}", seckillDao.queryById(seckillId).getNumber());
+        log.info("seckill number = {}", seckillDao.querySeckillById(seckillId).getNumber());
         seckillDao.reduceNumber(seckillId);
-        log.info("seckill number = {}", seckillDao.queryById(seckillId).getNumber());
+        log.info("seckill number = {}", seckillDao.querySeckillById(seckillId).getNumber());
 
         int i = 1 / 0;
     }

@@ -32,8 +32,8 @@ public class SeckillServiceTest {
     }
 
     @Test
-    public void getById() throws Exception {
-        Seckill seckill = seckillService.getById(1000L);
+    public void getSeckillById() throws Exception {
+        Seckill seckill = seckillService.getSeckillById(1000L);
         logger.info("seckill = {}", seckill);
     }
 

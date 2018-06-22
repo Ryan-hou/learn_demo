@@ -27,18 +27,19 @@ public class SeckillServiceImpl implements SeckillService {
     @Autowired
     private SeckillDao seckillDao;
 
+    //@Resource or @Autowired failed!(need new spring version)
     @Resource(name = "seckillServiceImpl")
     private SeckillService seckillService;
 
     @Autowired
     private SeckillServiceTemp seckillServiceTemp;
 
-    public Seckill getById(long seckillId) {
-        return seckillDao.queryById(seckillId);
+    public Seckill getSeckillById(long seckillId) {
+        return seckillDao.querySeckillById(seckillId);
     }
 
     public int executeSeckill(long seckillId) {
-        // avoid this invocation
+        // avoid "this" invocation
         seckillService.doSeckill(seckillId);
         // doSeckill(seckillId); // transaction don't work
 
@@ -49,9 +50,9 @@ public class SeckillServiceImpl implements SeckillService {
     @Transactional
     public void doSeckill(long seckillId) {
 
-        logger.info("seckill number = {}", getById(seckillId).getNumber());
+        logger.info("seckill number = {}", getSeckillById(seckillId).getNumber());
         seckillDao.reduceNumber(seckillId);
-        logger.info("seckill number = {}", getById(seckillId).getNumber());
+        logger.info("seckill number = {}", getSeckillById(seckillId).getNumber());
 
         // 测试回滚
         int i = 1 / 0;

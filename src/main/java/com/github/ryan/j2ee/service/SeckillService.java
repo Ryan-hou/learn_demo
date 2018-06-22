@@ -6,8 +6,6 @@ package com.github.ryan.j2ee.service;
  * @className: SeckillService
  * @date January 13,2017
  */
-
-
 import com.github.ryan.j2ee.entity.Seckill;
 
 /**
@@ -17,13 +15,12 @@ import com.github.ryan.j2ee.entity.Seckill;
 public interface SeckillService {
 
 
-
     /**
      * 查询单个秒杀记录
      * @param seckillId
      * @return
      */
-    Seckill getById(long seckillId);
+    Seckill getSeckillById(long seckillId);
 
 
     /**
