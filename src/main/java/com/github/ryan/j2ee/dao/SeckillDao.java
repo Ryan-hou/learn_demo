@@ -3,6 +3,8 @@ package com.github.ryan.j2ee.dao;
 import com.github.ryan.j2ee.entity.Seckill;
 import org.apache.ibatis.annotations.Param;
 
+import java.util.List;
+
 
 /**
  * @author Ryan-hou
@@ -25,5 +27,11 @@ public interface SeckillDao {
      * @return
      */
     Seckill querySeckillById(long seckillId);
+
+    Integer insertSeckill(Seckill seckill);
+
+    Integer updateSeckillByNumber(Integer number);
+
+    List<Seckill> listAllSeckill();
 
 }

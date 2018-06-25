@@ -24,4 +24,23 @@
         WHERE seckill_id = #{seckillId}
     </select>
 
+    <insert id="insertSeckill" parameterType="Seckill">
+        INSERT INTO seckill
+        (name, number, start_time, end_time, create_time)
+        VALUES
+        (#{name}, #{number}, #{startTime}, #{endTime}, #{createTime})
+    </insert>
+
+    <select id="listAllSeckill" resultType="Seckill">
+        SELECT *
+        FROM seckill
+    </select>
+
+    <update id="updateSeckillByNumber" parameterType="int">
+        UPDATE seckill
+        SET
+        number = number - 1
+        WHERE number = #{number}
+    </update>
+
 </mapper>

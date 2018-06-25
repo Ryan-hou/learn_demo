@@ -9,6 +9,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import java.util.Date;
+import java.util.List;
+
 /**
  * @author ryan.houyl@gmail.com
  * @description:
@@ -36,5 +39,37 @@ public class SeckillServiceTest {
         Seckill seckill = seckillService.getSeckillById(1000L);
         logger.info("seckill = {}", seckill);
     }
+
+
+    // test MySQL InnoDB transaction isolation level (RR)
+    @Test
+    public void testRepeatRead1() throws Exception {
+        Seckill seckill = seckillService.getSeckillById(1000L);
+    }
+
+    @Test
+    public void testRepeatRead2() throws Exception {
+        seckillService.doSeckill(1000L);
+    }
+
+    @Test
+    public void testNextKeyLock1() throws Exception {
+        //seckillService.listAllSeckill();
+        seckillService.updateSeckillByNumber(98);
+    }
+
+    @Test
+    public void testNextKeyLock2() throws Exception {
+        Seckill seckill = new Seckill();
+        seckill.setName("秒杀测试");
+        seckill.setNumber(96);
+        seckill.setStartTime(new Date());
+        seckill.setEndTime(new Date());
+        seckill.setCreateTime(new Date());
+
+        seckillService.insertSeckill(seckill);
+    }
+
+
 
 }
