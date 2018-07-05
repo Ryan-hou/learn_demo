@@ -29,6 +29,8 @@ public class DiscardServerHandler extends ChannelInboundHandlerAdapter {
                 System.out.flush();
             }
         } finally {
+            // who accesses a reference-counted object lastly is responsible for
+            // the destruction of the reference-counted object
             ReferenceCountUtil.release(msg);
         }
     }
