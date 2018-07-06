@@ -1,4 +1,4 @@
-package com.github.ryan.component.netty.server.discard;
+package com.github.ryan.component.netty.discard;
 
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.channel.ChannelFuture;

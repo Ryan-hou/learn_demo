@@ -1,4 +1,4 @@
-package com.github.ryan.component.netty.server.discard;
+package com.github.ryan.component.netty.discard;
 
 import io.netty.buffer.ByteBuf;
 import io.netty.channel.ChannelHandlerContext;
