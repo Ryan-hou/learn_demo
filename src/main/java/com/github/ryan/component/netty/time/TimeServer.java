@@ -33,6 +33,7 @@ public class TimeServer {
                     .channel(NioServerSocketChannel.class)
                     .childHandler(new ChannelInitializer<SocketChannel>() {
                         protected void initChannel(SocketChannel ch) throws Exception {
+                            // outbound events: write -> TimeServerHandler -> TimeEncoder
                             ch.pipeline().addLast(new TimeEncoder(), new TimeServerHandler());
                         }
                     })
