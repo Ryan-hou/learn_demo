@@ -33,15 +33,19 @@ public class TimeServer {
                     .channel(NioServerSocketChannel.class)
                     .childHandler(new ChannelInitializer<SocketChannel>() {
                         protected void initChannel(SocketChannel ch) throws Exception {
-                            // outbound events: write -> TimeServerHandler -> TimeEncoder
+                            // outbound events: write -> Tail -> TimeEncoder -> Head
+                            // inbound events: read -> Head -> TimeServerHandler -> Tail
                             ch.pipeline().addLast(new TimeEncoder(), new TimeServerHandler());
                         }
                     })
                     .option(ChannelOption.SO_BACKLOG, 128)
                     .childOption(ChannelOption.SO_KEEPALIVE, true);
 
-            ChannelFuture f = b.bind(port).sync();
+            // Bind and start to accept incoming connections
+            ChannelFuture f = b.bind(port).sync(); // Waits for this future until it is done
 
+
+            // Wait util the server socket is closed.
             f.channel().closeFuture().sync();
         } finally {
             workerGroup.shutdownGracefully();

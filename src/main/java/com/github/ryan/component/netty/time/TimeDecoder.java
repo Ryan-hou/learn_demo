@@ -11,8 +11,7 @@ import java.util.List;
  * @author ryan.houyl@gmail.com
  * @description:
  * Dealing with a Stream-based Transport:
- * deal with the fragmentation issue,
- * also a ChannelInboundHandler
+ * deal with the fragmentation issue, also a ChannelInboundHandler
  * @className: TimeDecoder
  * @date July 06,2018
  */

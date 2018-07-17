@@ -31,7 +31,8 @@ public class TimeClient {
             b.handler(new ChannelInitializer<SocketChannel>() {
                 @Override
                 protected void initChannel(SocketChannel ch) throws Exception {
-                    // inbound events: read -> TimeDecoder -> TimeClientHandler
+                    // inbound events:
+                    // read -> Head -> TimeDecoder -> TimeClientHandler -> Tail
                     ch.pipeline().addLast(new TimeDecoder(), new TimeClientHandler());
                 }
             });

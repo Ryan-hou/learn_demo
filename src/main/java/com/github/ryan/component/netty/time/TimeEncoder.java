@@ -10,8 +10,7 @@ import io.netty.channel.ChannelPromise;
  * @author ryan.houyl@gmail.com
  * @description:
  * It's much simpler than writing a decoder because there's no need to
- * deal with packet fragmentation and assembly when encoding a
- * message
+ * deal with packet fragmentation and assembly when encoding a message
  * @className: TimeEncoder
  * @date July 06,2018
  */
