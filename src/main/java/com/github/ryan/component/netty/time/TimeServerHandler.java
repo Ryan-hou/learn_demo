@@ -37,7 +37,18 @@ public class TimeServerHandler extends ChannelInboundHandlerAdapter {
 
         // use pojo with encoder
         ChannelFuture f = ctx.writeAndFlush(new UnixTime());
-        f.addListener(ChannelFutureListener.CLOSE);
+        // f.addListener(ChannelFutureListener.CLOSE);
+        f.addListener(new ChannelFutureListener() {
+            @Override
+            public void operationComplete(ChannelFuture future) throws Exception {
+               assert f == future;
+                if (f.isSuccess()) {
+                    System.out.println("Connection is established.......");
+                } else {
+                    System.out.println("Connection established fail!");
+                }
+            }
+        });
     }
 
     @Override
