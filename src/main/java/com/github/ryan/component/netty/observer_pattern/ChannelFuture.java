@@ -4,6 +4,8 @@ package com.github.ryan.component.netty.observer_pattern;
 import io.netty.channel.Channel;
 
 /**
+ * ChannelFuture： channel异步操作的结果
+ *
  * The result of an asynchronous {@link io.netty.channel.Channel} I/O operation.
  *
  * All I/O operations in Netty are asynchronous. It means any I/O calls will
@@ -33,6 +35,9 @@ import io.netty.channel.Channel;
  * the I/O thread, the I/O operation it is waiting for might never complete because
  * {@link #await()} can block the I/O operation it is waiting for, which is a
  * dead lock.
+ * 不要在 ChannelHandler 中调用 ChannelFuture 的 await 方法，可能会导致死锁：
+ * ChannelHandler 通常是由I/O线程调用，该 I/O 线程再调用 await() 方法会导致该I/O线程阻塞并等待自己:
+ * dead lock: I/O thread calls await -- I/O thread block -- wait I/O thread(Blocking)
  *
  * @author ryan.houyl@gmail.com
  * @description:

@@ -41,7 +41,7 @@ public class TimeServerHandler extends ChannelInboundHandlerAdapter {
         f.addListener(new ChannelFutureListener() {
             @Override
             public void operationComplete(ChannelFuture future) throws Exception {
-               assert f == future;
+                assert f == future;
                 if (f.isSuccess()) {
                     System.out.println("Connection is established.......");
                 } else {

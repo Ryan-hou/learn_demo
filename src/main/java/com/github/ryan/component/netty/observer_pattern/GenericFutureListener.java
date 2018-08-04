@@ -5,7 +5,7 @@ import java.util.EventListener;
 /**
  * @author ryan.houyl@gmail.com
  * @description:
- * 观察者接口，被观察者为异步操作结果Future
+ * 观察者接口，被观察者为异步操作结果Future对应的操作，当该操作完成时，回调注册的观察者
  *
  * Listens to the result of a {@link Future}.
  * The result of the asynchronous operation is notified once this listener

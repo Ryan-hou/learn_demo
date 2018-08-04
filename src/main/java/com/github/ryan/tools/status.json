@@ -1,0 +1,15 @@
+{
+  // 1xxx informational
+  "100": "Continue",
+  "102": "Processing",
+
+  // 2xx Success
+  "200": "OK",
+  "201": "Created",
+
+  // 3xx Redirection
+  "302": "Found",
+
+  // 4xx Client Error
+  "401": "Unauthorized"
+}

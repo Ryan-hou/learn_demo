@@ -85,6 +85,9 @@ public interface Future<V> extends java.util.concurrent.Future<V> {
      * completed, the specified listener is notified immediately.
      */
     // <? extends Future<? super V>> equals: Future<V> or Future<X>, X is supertype of V
+
+    // Future<A> a = ...; a.addListener(new GenericFutureListener<Future<B>> {....} // listener); // B is superclass of A
+    // callback: listener.operationComplete(a); // B is supertype of A,B有的方法，a一定有
     Future<V> addListener(GenericFutureListener<? extends Future<? super V>> listener);
 
     /**

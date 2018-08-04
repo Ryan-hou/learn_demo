@@ -6,7 +6,7 @@ package com.github.ryan.component.netty.observer_pattern;
  * Special {@link Future} which is writable.
  * 实现的Future子类的状态是不可变的，如果我们想要变化，那该怎么办呢？使用 Promise
  * Promise从Uncompleted-->Completed的状态转变有且只能有一次，也就是说setSuccess和setFailure方法最多只会成功一个，
- * 此外，在setSuccess和setFailure方法中会通知注册到其上的监听者。
+ * 此外，在setSuccess和setFailure方法中会通知注册到其上的监听者
  *
  * @className: Promise
  * @date July 31,2018
