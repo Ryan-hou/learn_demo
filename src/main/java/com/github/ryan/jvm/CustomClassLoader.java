@@ -27,6 +27,9 @@ public class CustomClassLoader extends ClassLoader {
         this.CLASSLOADER_NAME = classLoaderName;
     }
 
+
+    // ClassLoader: loadClass(String name, boolean resolve) 模板方法模式
+    // findClass(String name):hook method
     @Override
     protected Class<?> findClass(String name) throws ClassNotFoundException {
 

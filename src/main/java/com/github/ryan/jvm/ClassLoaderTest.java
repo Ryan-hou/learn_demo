@@ -53,5 +53,11 @@ public class ClassLoaderTest {
         // 虚拟机存在两个 ClassLoaderTest 类，一个是由系统应用程序类加载器加载的，另一个是由我们自定义的类加载器加载的
         // 虽然都来自同一个Class文件，但依然是两个独立的类，做对象所属类型检查时结果自然为false
         log.info("same classLoader? {}", obj instanceof ClassLoaderTest);
+
+        // com.github.ryan.jvm.ClassLoaderTest$1@xxxxxxxx
+        log.info("Clazz Loader: {}", clazz.getClassLoader());
+        // sun.misc.Launcher$AppClassLoader@xxxxxxxx
+        log.info("Default Loader: {}", ClassLoaderTest.class.getClassLoader());
+
     }
 }
