@@ -29,15 +29,19 @@ public class CustomClassLoader extends ClassLoader {
 
     @Override
     protected Class<?> findClass(String name) throws ClassNotFoundException {
-        byte[] data = loadClassData(name);
-        if (data == null) {
-            throw new ClassNotFoundException(name);
+
+        byte[] data;
+        try {
+            data = loadClassData(name);
+        } catch (IOException e) {
+            log.error("loadClassData exception", e);
+            throw new ClassNotFoundException("findClass exception!", e);
         }
 
         return super.defineClass(name, data, 0, data.length);
     }
 
-    private byte[] loadClassData(String name) {
+    private byte[] loadClassData(String name) throws IOException {
         InputStream in = null;
         ByteArrayOutputStream baos = null;
 
@@ -53,8 +57,10 @@ public class CustomClassLoader extends ClassLoader {
             return data;
         } catch (FileNotFoundException e) {
             log.error("File not found error, file path = {}", filePath, e);
+            throw e;
         } catch (IOException e) {
             log.error("read file error! ", e);
+            throw e;
         } finally {
             try {
                 if (in != null) {
@@ -65,9 +71,9 @@ public class CustomClassLoader extends ClassLoader {
                 }
             } catch (IOException e) {
                log.error("close io error! ", e);
+               throw e;
             }
         }
-        return null;
     }
 
     @Override
