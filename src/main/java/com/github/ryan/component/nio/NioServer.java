@@ -42,6 +42,7 @@ public class NioServer {
                 System.out.println("Selector waiting for channel events.......");
                 // select() 方法会阻塞，直到至少有一个channel被selected
                 int nReady = selector.select();
+                System.out.println(nReady + " channels are ready...........");
                 Set<SelectionKey> keys = selector.selectedKeys();
                 Iterator<SelectionKey> it = keys.iterator();
 
