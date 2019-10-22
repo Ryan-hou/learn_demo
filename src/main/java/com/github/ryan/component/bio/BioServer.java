@@ -44,8 +44,8 @@ public class BioServer {
 
                 // read -> native socketRead0 -> 阻塞主线程 -> 线程池
                 byte[] content = new byte[256];
-                socket.getInputStream().read(content);
-                System.out.println(new String(content));
+                int len = socket.getInputStream().read(content);
+                System.out.println(new String(content, 0, len));
 
                 // close
                 socket.close();

@@ -24,8 +24,8 @@ public class BioClient3 {
 
             // read
             byte[] content = new byte[256];
-            socket.getInputStream().read(content);
-            System.out.println(new String(content));
+            int len = socket.getInputStream().read(content);
+            System.out.println(new String(content, 0, len));
             // write
             socket.getOutputStream().write("Hello server, I'm Client3!".getBytes());
 
