@@ -60,8 +60,8 @@ public class NioServer {
                         SocketChannel socketChannel = (SocketChannel) key.channel();
                         readBuffer.clear();
                         // channel -> buffer
-                        socketChannel.read(readBuffer);
-                        System.out.println("received: " + new String(readBuffer.array()));
+                        int len = socketChannel.read(readBuffer);
+                        System.out.println("received: " + new String(readBuffer.array(), 0, len));
 
                         key.interestOps(SelectionKey.OP_WRITE);
                     } else if (key.isWritable()) {

@@ -47,8 +47,8 @@ public class NioClient {
 
                     readBuffer.clear();
                     // channel -> buffer("received")
-                    socketChannel.read(readBuffer);
-                    System.out.println(new String(readBuffer.array()));
+                    int len = socketChannel.read(readBuffer);
+                    System.out.println(new String(readBuffer.array(), 0, len));
                 }
 
             } catch (IOException e) {
