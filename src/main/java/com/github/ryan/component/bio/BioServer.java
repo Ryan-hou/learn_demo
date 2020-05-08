@@ -59,8 +59,9 @@ public class BioServer {
     public static void main(String[] args) {
         try {
             ServerSocket serverSocket = new ServerSocket();
-            // bind -> listen
-            serverSocket.bind(new InetSocketAddress((InetAddress) null, 8888)); // contains listen
+            final int SERVER_PORT = 8888;
+            // bind & listen on SERVER_PORT
+            serverSocket.bind(new InetSocketAddress(SERVER_PORT));
             // or directly use
             // ServerSocket serverSocket1 = new ServerSocket(8888);
 
